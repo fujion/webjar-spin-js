@@ -82,7 +82,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.fujion.webjars</groupId>
-			<artifactId>systemjs-plugin-babel</artifactId>
+			<artifactId>fujion-systemjs-plugin-babel</artifactId>
 			<version>0.0.25-SNAPSHOT</version>
 			<scope>runtime</scope>
 		</dependency>
