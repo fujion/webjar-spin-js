@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.fujion.webjars</groupId>
+		<artifactId>fujion-webjars</artifactId>
+		<version>2.1.0</version>
+	</parent>
+
+	<name>Spin.js Animated Spinner</name>
+	<artifactId>fujion-spin-js</artifactId>
+	<version>4.0.0-SNAPSHOT</version>
+	<description>An animated loading spinner.</description>
+
+	<properties>
+		<src.url>https://github.com/fgnass/spin.js/archive/${src.version}.zip</src.url>
+		<src.top>spin.js-${src.version}</src.top>
+		<systemjs>
+			{
+				"paths": {
+					"spin-js": "js/spin.js",
+					"spin-js-base": "spin.js",
+					"spin-js-css": "spin.css"
+				}
+			}
+		</systemjs>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>precompile</id>
+						<configuration>
+							<target>
+								<get src="${src.url}" dest="${src.zipdir}/src.zip"/>
+								<unzip src="${src.zipdir}/src.zip" dest="${src.tmpdir}" />
+							</target>
+						</configuration>
+					</execution>
+					<execution>
+						<id>postcompile</id>
+						<configuration>
+							<target>
+								<move todir="${webjar.target}">
+									<fileset dir="${src.rootdir}" includes="spin.js,spin.css,*.md"/>
+								</move>
+								<copy todir="${webjar.target}">
+									<fileset dir="${webjar.source}"/>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.samaxes.maven</groupId>
+				<artifactId>minify-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-minify</id>
+						<configuration>
+							<cssSourceExcludes>
+								<!-- Don't minify CSS because keyframes not properly handled. -->
+								<cssSourceExclude>*.*</cssSourceExclude>
+							</cssSourceExcludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.fujion.webjars</groupId>
+			<artifactId>systemjs-plugin-babel</artifactId>
+			<version>0.0.25-SNAPSHOT</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+</project>
