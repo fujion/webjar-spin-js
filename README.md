@@ -1,2 +1,3 @@
-# fujion-spin-js
-Web jar for https://github.com/fgnass/spin.js.
+# webjar-spin-js
+Web jar for spin.js.
+https://github.com/fgnass/spin.js
