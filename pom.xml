@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -11,7 +9,7 @@
 
 	<name>Spin.js Animated Spinner</name>
 	<artifactId>webjar-spin-js</artifactId>
-	<version>4.0.0-SNAPSHOT</version>
+	<version>4.0.0</version>
 	<description>An animated loading spinner.</description>
 
 	<properties>
@@ -37,7 +35,7 @@
 						<id>precompile</id>
 						<configuration>
 							<target>
-								<get src="${src.url}" dest="${src.zipdir}/src.zip"/>
+								<get src="${src.url}" dest="${src.zipdir}/src.zip" />
 								<unzip src="${src.zipdir}/src.zip" dest="${src.tmpdir}" />
 							</target>
 						</configuration>
@@ -47,10 +45,10 @@
 						<configuration>
 							<target>
 								<move todir="${webjar.target}">
-									<fileset dir="${src.rootdir}" includes="spin.js,spin.css,*.md"/>
+									<fileset dir="${src.rootdir}" includes="spin.js,spin.css,*.md" />
 								</move>
 								<copy todir="${webjar.target}">
-									<fileset dir="${webjar.source}"/>
+									<fileset dir="${webjar.source}" />
 								</copy>
 							</target>
 						</configuration>
@@ -83,8 +81,12 @@
 		<dependency>
 			<groupId>org.fujion.webjars</groupId>
 			<artifactId>webjar-systemjs-plugin-babel</artifactId>
-			<version>0.0.25-SNAPSHOT</version>
+			<version>0.0.25</version>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
+
+  <scm>
+    <tag>4.0.0</tag>
+  </scm>
 </project>
