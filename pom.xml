@@ -9,7 +9,7 @@
 
 	<name>Spin.js Animated Spinner</name>
 	<artifactId>webjar-spin-js</artifactId>
-	<version>4.0.0</version>
+	<version>4.0.0-1-SNAPSHOT</version>
 	<description>An animated loading spinner.</description>
 
 	<properties>
@@ -85,8 +85,4 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
-
-  <scm>
-    <tag>4.0.0</tag>
-  </scm>
 </project>
