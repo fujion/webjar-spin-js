@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "spin-js": "spin.umd.js",
+    "spin-js-css": "spin.css"
+  }
+}
