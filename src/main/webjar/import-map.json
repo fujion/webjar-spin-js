@@ -1,6 +1,6 @@
 {
-  "imports": {
-    "spin-js": "spin.umd.js",
-    "spin-js-css": "spin.css"
+  "paths": {
+    "spin-js": "dist/spin.umd.js",
+    "spin-js-css": "dist/spin.css"
   }
 }

@@ -49,9 +49,12 @@
 						<id>postcompile</id>
 						<configuration>
 							<target>
-								<move todir="${webjar.target}">
-									<fileset dir="${src.rootdir}" includes="spin*.js,spin.css,*.md" />
-								</move>
+								<copy todir="${webjar.target}">
+									<fileset dir="${src.rootdir}" includes="*.md" />
+								</copy>
+								<copy todir="${webjar.target}/dist">
+									<fileset dir="${src.rootdir}" includes="spin*.js,spin.css" />
+								</copy>
 							</target>
 						</configuration>
 					</execution>
