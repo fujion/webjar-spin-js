@@ -9,7 +9,7 @@
 
 	<name>Spin.js Animated Spinner</name>
 	<artifactId>webjar-spin-js</artifactId>
-	<version>4.1.1-1</version>
+	<version>4.1.1-1-SNAPSHOT</version>
 	<description>An animated loading spinner.</description>
 
 	<!-- NPM version does not include transpiled umd module. -->
@@ -21,10 +21,30 @@
 		<src.url>https://github.com/fgnass/spin.js/archive/${src.version}.zip</src.url>
 		<src.url2>https://spin.js.org/spin.umd.js</src.url2>
 		<src.top>spin.js-${src.version}</src.top>
+		<npm-install.skip>false</npm-install.skip>
 	</properties>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.fujion.webjars</groupId>
+				<artifactId>webjar-validator-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>validate-webjar</id>
+						<configuration>
+							<rules>
+								<rule>file_exists import-map.json</rule>
+								<rule>file_exists README.md</rule>
+								<rule>file_contains LICENSE.md "MIT License"</rule>
+								<rule>file_exists dist/spin.css</rule>
+								<rule>file_exists dist/spin.js</rule>
+								<rule>file_exists dist/spin.umd.js</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
