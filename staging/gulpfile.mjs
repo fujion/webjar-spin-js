@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 
-const srcDir = '${src.rootdir}/node_modules/spin.js/';
+const srcDir = '${webjar.staging}/node_modules/spin.js/';
 const destDir = '${webjar.target}/';
 
 function task1() {
