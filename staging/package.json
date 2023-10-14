@@ -1,0 +1,17 @@
+{
+  "name": "${project.artifactId}",
+  "version": "${version.unrevise}",
+  "description": "${project.description}",
+  "type": "module",
+  "scripts": {
+    "postinstall": "rollup -c rollup.config.mjs && gulp"
+  },
+  "dependencies": {
+    "spin.js": "${version.unrevise}"
+    },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "rollup": "^4.0.2",
+    "gulp": "^4.0.0"
+  }
+}

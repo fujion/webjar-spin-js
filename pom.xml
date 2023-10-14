@@ -15,12 +15,6 @@
 	<!-- NPM version does not include transpiled umd module. -->
 
 	<properties>
-		<skip.minification.js>false</skip.minification.js>
-		<!-- Don't minify CSS because keyframes not properly handled. -->
-		<skip.minification.css>true</skip.minification.css>
-		<src.url>https://github.com/fgnass/spin.js/archive/${src.version}.zip</src.url>
-		<src.url2>https://spin.js.org/spin.umd.js</src.url2>
-		<src.top>spin.js-${src.version}</src.top>
 		<npm-install.skip>false</npm-install.skip>
 	</properties>
 
@@ -38,8 +32,8 @@
 								<rule>file_exists README.md</rule>
 								<rule>file_contains LICENSE.md "MIT License"</rule>
 								<rule>file_exists dist/spin.css</rule>
-								<rule>file_exists dist/spin.js</rule>
 								<rule>file_exists dist/spin.umd.js</rule>
+								<rule>file_exists dist/spin.umd.min.js</rule>
 							</rules>
 						</configuration>
 					</execution>
@@ -52,21 +46,11 @@
 						<id>precompile</id>
 						<configuration>
 							<target>
-								<get src="${src.url}" dest="${src.zipdir}/src.zip" />
-								<unzip src="${src.zipdir}/src.zip" dest="${src.tmpdir}" />
-								<get src="${src.url2}" dest="${src.rootdir}/spin.umd.js" />
-							</target>
-						</configuration>
-					</execution>
-					<execution>
-						<id>postcompile</id>
-						<configuration>
-							<target>
-								<copy todir="${webjar.target}">
-									<fileset dir="${src.rootdir}" includes="*.md" />
-								</copy>
-								<copy todir="${webjar.target}/dist">
-									<fileset dir="${src.rootdir}" includes="spin*.js,spin.css" />
+								<copy todir="${src.rootdir}">
+									<fileset dir="${basedir}/staging"/>
+									<filterchain>
+										<expandproperties/>
+									</filterchain>
 								</copy>
 							</target>
 						</configuration>
